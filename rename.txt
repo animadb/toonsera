@@ -1,0 +1,16 @@
+#!/bin/bash
+
+search="[Toonworld4all] Naruto - "
+replace="NARUTO - S2 EP"
+
+for file in "$search"*; do
+    if [ -e "$file" ]; then
+        directory=$(dirname "$file")
+        filename=$(basename "$file")
+        newname="${filename//"$search"/$replace}"
+        mv "$file" "$directory/$newname"
+    fi
+done
+
+echo "Files renamed successfully!"
+read -p "Press Enter to continue..."
